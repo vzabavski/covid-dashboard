@@ -462,6 +462,16 @@ h6 {
   color: red;
 }
 
+.statistic-table{
+  padding: 5px;
+  text-align: center;
+  color: white;
+}
+
+.cases-column {
+  color:red;
+}
+
 .table {
   position: relative;
   background-color: #3f3f3f;
@@ -493,6 +503,10 @@ h6 {
   margin-top: -10px;
   top: 50%;
   left: 10px;
+}
+
+.table-head {
+  line-height: 200%;
 }
 
 .table__btn_right {
