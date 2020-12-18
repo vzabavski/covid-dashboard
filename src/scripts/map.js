@@ -62,3 +62,19 @@ function countryPointToLayer(feature, latlng) {
          riseOnHover: true
      });
 }
+const legend = L.control({position: 'bottomright'});
+
+legend.onAdd = function () {
+
+    const div = L.DomUtil.create('div', 'legend'),
+        grades = [0, 1000, 5000, 10000, 100000, 500000, 1000000],
+        colors = ['rgb(255, 198, 42)', 'rgb(252, 151, 20)', 'rgb(255, 60, 0)', 'rgb(204, 52, 6)', ' rgb(133, 33, 2)', 'rgb(87, 14, 1)', 'rgb(46, 7, 0)'];
+
+    for (var i = 0; i < grades.length; i++) {
+        div.innerHTML += `<div class="legend-row"><i style="background:${colors[i]}"></i> <p>${grades[i]}${grades[i + 1] ? '&ndash;' + grades[i + 1] : '+'}</p></div>`;
+    }
+
+    return div;
+};
+
+legend.addTo(map);
