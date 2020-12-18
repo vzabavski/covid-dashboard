@@ -78,3 +78,10 @@ legend.onAdd = function () {
 };
 
 legend.addTo(map);
+
+
+const fs = require('fs');
+
+let rawdata = fs.readFileSync('counties.json');
+let student = JSON.parse(rawdata);
+console.log(student);
