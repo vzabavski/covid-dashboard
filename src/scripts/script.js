@@ -26,10 +26,3 @@ for (let i = 0; i < selectSingle_labels.length; i++) {
   });
 }
 
-var mapOptions = {
-   center: [17.385044, 78.486671],
-   zoom: 10
-}
-var map = new L.map('map', mapOptions);
-var layer = new L.TileLayer('http://tile.openstreetmap.bzh/br/{z}/{x}/{y}.png');
-map.addLayer(layer);

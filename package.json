@@ -1,8 +1,8 @@
 {
-  "name": "english-for-kids",
+  "name": "covid-dashboard",
   "version": "1.0.0",
-  "description": "Educational application for kids",
-  "main": "index.js",
+  "description": "",
+  "main": "./src/",
   "scripts": {
     "build": "webpack --mode production",
     "dev": "webpack --mode development",
@@ -11,24 +11,21 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/rolling-scopes-school/vzabavski-JS2020Q3.git"
+    "url": "git+https://github.com/vzabavski/covid-dashboard.git"
   },
-  "author": "Vitaly Zabavski",
+  "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/rolling-scopes-school/vzabavski-JS2020Q3/issues"
+    "url": "https://github.com/vzabavski/covid-dashboard/issues"
   },
-  "homepage": "https://github.com/rolling-scopes-school/vzabavski-JS2020Q3#readme",
+  "homepage": "https://github.com/vzabavski/covid-dashboard#readme",
   "devDependencies": {
-    "eslint": "^7.14.0",
+    "css-loader": "^5.0.1",
     "html-webpack-plugin": "^4.5.0",
-    "mini-css-extract-plugin": "^1.3.1",
+    "mini-css-extract-plugin": "^1.3.3",
+    "path": "^0.12.7",
+    "style-loader": "^2.0.0",
     "webpack": "^5.10.3",
     "webpack-cli": "^4.2.0"
-  },
-  "dependencies": {
-    "css-loader": "^5.0.1",
-    "eslint-loader": "^4.0.2",
-    "style-loader": "^2.0.0"
   }
 }
