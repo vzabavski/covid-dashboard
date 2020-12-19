@@ -1,16 +1,5 @@
-body {
-    width: 100%;
-    height: 100%;
-}
 
-/*#map {
-    width: 90%;
-    height: 400px;
-    position: absolute;
-    top: 10%;
-    left: 5%;
-}*/
-.info {
+.marker {
     display: flex;
     position: relative;
     justify-content: center;
@@ -25,28 +14,28 @@ body {
     box-shadow: 2px 6px 9px rgba(black, .9);
 }
 
-.info.marker-extralight {
+.marker.marker-extralight {
     background: rgb(255, 198, 42);
 }
-.info.marker-light {
+.marker.marker-light {
     background: rgb(252, 151, 20);
 }
-.info.marker-medium {
+.marker.marker-medium {
     background: rgb(255, 60, 0);
 }
-.info.marker-dark {
+.marker.marker-dark {
     background: rgb(204, 52, 6);
 }
-.info.marker-darker {
+.marker.marker-darker {
     background: rgb(133, 33, 2);
 }
-.info.marker-extradark {
+.marker.marker-extradark {
     background: rgb(87, 14, 1);
 }
-.info.marker-ultradark {
+.marker.marker-ultradark {
     background: rgb(46, 7, 0);
 }
-.info-legend {
+.info {
     min-height: 60px;
     display: block; 
     padding: 6px 8px;
@@ -56,7 +45,7 @@ body {
     box-shadow: 0 0 15px rgba(0,0,0,0.2);
     border-radius: 5px;
 }
-.info-legend h4 {
+.info h4 {
     vertical-align: middle;
     margin: 0 0 5px;
     color: #777;
