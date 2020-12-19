@@ -1,18 +1,21 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-	 <link type="text/css" rel="stylesheet" href="./styles/style.css">
-	 <link rel = "stylesheet" href = "http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.css" />
-	 <script src = "http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.js"></script>
-    <title>COVID-19 Dashboard</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link type="text/css" rel="stylesheet" href="./styles/style.css">
+	<link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.css" />
+	<script src="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.js"></script>
+	<title>COVID-19 Dashboard</title>
 </head>
+
 <body>
 	<header class="header">
 		<div class='container'>
 			<div class="header__body">
-				<h1 class="header__title">COVID-19 Dashboard by the Center for Systems Science and Engineering (CSSE) at Johns Hopkins University (JHU)</h1>
+				<h1 class="header__title">COVID-19 Dashboard by the Center for Systems Science and Engineering (CSSE) at
+					Johns Hopkins University (JHU)</h1>
 			</div>
 		</div>
 	</header>
@@ -26,6 +29,7 @@
 						<p class="global__cases">72 098 345</p>
 					</div>
 					<div class="main__list list fullscreen">
+						<button class="btn-keyboard"></button>
 						<button class="btn-fullscreen"></button>
 						<div class="list__header">
 							<h2 class="list__title">Cases by Country/Region/Sovereignty</h2>
@@ -37,14 +41,54 @@
 								<div class="select" data-state="">
 									<div class="select__title"></div>
 									<div class="select__content">
-										<input id="singleSelect0" class="select__input" type="radio" name="singleSelect" checked />
-										<label for="singleSelect0" tabindex="0" class="select__label" data-value="Total"></label>
-										<input id="singleSelect1" class="select__input" type="radio" name="singleSelect">
-										<label for="singleSelect1" tabindex="0" class="select__label" data-value="Of the last day"></label>
-										<input id="singleSelect2" class="select__input" type="radio" name="singleSelect"/>
-										<label for="singleSelect2" tabindex="0" class="select__label" data-value="Total per on 100 thousand population"></label>
-										<input id="singleSelect3" class="select__input" type="radio" name="singleSelect">
-										<label for="singleSelect3" tabindex="0" class="select__label" data-value="Based on 100 thousand population of the last day"></label>
+										<input id="singleSelect0" class="select__input" type="radio" name="singleSelect"
+											checked />
+										<label for="singleSelect0" tabindex="0" class="select__label"
+											data-value="Total cases"></label>
+										<input id="singleSelect1" class="select__input" type="radio"
+											name="singleSelect" />
+										<label for="singleSelect1" tabindex="0" class="select__label"
+											data-value="Total deaths"></label>
+										<input id="singleSelect2" class="select__input" type="radio"
+											name="singleSelect" />
+										<label for="singleSelect2" tabindex="0" class="select__label"
+											data-value="Total recovered"></label>
+										<input id="singleSelect3" class="select__input" type="radio"
+											name="singleSelect" />
+										<label for="singleSelect3" tabindex="0" class="select__label"
+											data-value="Today cases"></label>
+										<input id="singleSelect4" class="select__input" type="radio"
+											name="singleSelect" />
+										<label for="singleSelect4" tabindex="0" class="select__label"
+											data-value="Today deaths"></label>
+										<input id="singleSelect5" class="select__input" type="radio"
+											name="singleSelect" />
+										<label for="singleSelect5" tabindex="0" class="select__label"
+											data-value="Today recovered"></label>
+										<input id="singleSelect6" class="select__input" type="radio"
+											name="singleSelect" />
+										<label for="singleSelect6" tabindex="0" class="select__label"
+											data-value="Total cases per 100.000 population"></label>
+										<input id="singleSelect7" class="select__input" type="radio"
+											name="singleSelect" />
+										<label for="singleSelect7" tabindex="0" class="select__label"
+											data-value="Total deaths per 100.000 population"></label>
+										<input id="singleSelect8" class="select__input" type="radio"
+											name="singleSelect" />
+										<label for="singleSelect8" tabindex="0" class="select__label"
+											data-value="Total recovered per 100.000 population"></label>
+										<input id="singleSelect9" class="select__input" type="radio"
+											name="singleSelect" />
+										<label for="singleSelect9" tabindex="0" class="select__label"
+											data-value="Today cases per 100.000 population"></label>
+										<input id="singleSelect10" class="select__input" type="radio"
+											name="singleSelect" />
+										<label for="singleSelect10" tabindex="0" class="select__label"
+											data-value="Today deaths per 100.000 population"></label>
+										<input id="singleSelect11" class="select__input" type="radio"
+											name="singleSelect" />
+										<label for="singleSelect11" tabindex="0" class="select__label"
+											data-value="Today recovered per 100.000 population"></label>
 									</div>
 								</div>
 							</form>
@@ -88,7 +132,72 @@
 						</table>
 					</div>
 					<div class="main__chart chart">
-
+					</div>
+				</div>
+				<div class="keyboard hidden">
+					<div class="keyboard-buttons">
+						<div class="keyboard-buttons-row">
+							<button data-key="192" type="button" class="btn"><span>~</span></button>
+							<button data-key="49" type="button" class="btn"></button>
+							<button data-key="50" type="button" class="btn"></button>
+							<button data-key="51" type="button" class="btn"></button>
+							<button data-key="52" type="button" class="btn"></button>
+							<button data-key="53" type="button" class="btn"></button>
+							<button data-key="54" type="button" class="btn"></button>
+							<button data-key="55" type="button" class="btn"></button>
+							<button data-key="56" type="button" class="btn"></button>
+							<button data-key="57" type="button" class="btn"></button>
+							<button data-key="48" type="button" class="btn"></button>
+							<button data-key="189" type="button" class="btn"></button>
+							<button data-key="187" type="button" class="btn"></button>
+							<button type="button" class="top__btn">&#8592;<span>Back</span></button></td>
+						</div>
+						<div class="keyboard-buttons-row">
+							<button data-key="81" type="button" class="btn"></button>
+							<button data-key="87" type="button" class="btn"></button>
+							<button data-key="69" type="button" class="btn"></button>
+							<button data-key="82" type="button" class="btn"></button>
+							<button data-key="84" type="button" class="btn"></button>
+							<button data-key="89" type="button" class="btn"></button>
+							<button data-key="85" type="button" class="btn"></button>
+							<button data-key="73" type="button" class="btn"></button>
+							<button data-key="79" type="button" class="btn"></button>
+							<button data-key="80" type="button" class="btn"></button>
+							<button data-key="219" type="button" id='btn1' class="btn"></button>
+							<button data-key="221" type="button" id='btn1' class="btn"></button>
+							<button data-key="220" type="button" class="btn"></button>
+							<button data-key="13" type="button" class="btn"></button>
+						</div>
+						<div class="keyboard-buttons-row">
+							<button type="button" class="caps">Caps <span>Lock</span></button></td>
+							<button data-key="65" type="button" class="btn"></button>
+							<button data-key="83" type="button" class="btn"></button>
+							<button data-key="68" type="button" class="btn"></button>
+							<button data-key="70" type="button" class="btn"></button>
+							<button data-key="71" type="button" class="btn"></button>
+							<button data-key="72" type="button" class="btn"></button>
+							<button data-key="74" type="button" class="btn"></button>
+							<button data-key="75" type="button" class="btn"></button>
+							<button data-key="76" type="button" class="btn"></button>
+							<button data-key="186" type="button" id='btn1' class="btn"></button>
+							<button data-key="222" type="button" id='btn1' class="btn"></button>
+						</div>
+						<div class="keyboard-buttons-row">
+							<button type="button" class="shift__btn"><span>Shift</span></button>
+							<button data-key="89" type="button" class="btn"></button>
+							<button data-key="88" type="button" class="btn"></button>
+							<button data-key="67" type="button" class="btn"></button>
+							<button data-key="86" type="button" class="btn"></button>
+							<button data-key="66" type="button" class="btn"></button>
+							<button data-key="78" type="button" class="btn"></button>
+							<button data-key="77" type="button" class="btn"></button>
+							<button data-key="188" type="button" id='btn1' class="btn"></button>
+							<button data-key="190" type="button" id='btn1' class="btn"></button>
+							<button data-key="191" type="button" id='btn1' class="btn"></button>
+						</div>
+						<div class="keyboard-buttons-row">
+							<button data-key="32" type="button" class="space__btn btn"></button>
+						</div>
 					</div>
 				</div>
 			</div>
@@ -99,7 +208,8 @@
 		<div class='container'>
 			<div class="footer__body">
 				<div class="footer__rss">
-					<a class="footer__logo" href="https://rs.school/js/" target="blank"><img src="assets/image/rs_school_js.svg" alt=""></a>
+					<a class="footer__logo" href="https://rs.school/js/" target="blank"><img
+							src="assets/image/rs_school_js.svg" alt=""></a>
 				</div>
 				<div class="footer__author">© 2020 <a class="footer__author_link" href="" target="blank"></a></div>
 			</div>
@@ -107,8 +217,10 @@
 	</footer>
 
 	<script src="./scripts/script.js" type="module"></script>
-   <script src="./scripts/countries.data.js" type="module"></script>
-   <script src="./scripts/stats.data.js" type="module"></script>
-   <script src="./scripts/cases.table.js" type="module"></script>
+	<script src="./scripts/countries.data.js" type="module"></script>
+	<script src="./scripts/stats.data.js" type="module"></script>
+	<script src="./scripts/cases.table.js" type="module"></script>
+	<script src="./scripts/keyboard.js" type="module"></script>
 </body>
+
 </html>
