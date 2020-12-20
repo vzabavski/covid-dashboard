@@ -1,45 +1,45 @@
-export const StatsData = {
-    
-    getInfo: function(countryName = 'Belarus', mode = 'world') {
-        let param = countryName.replace(/ /gi, '-').toLowerCase()
-        switch(mode) {
-          case 'total by country': fetch(`https://api.covid19api.com/total/country/${param}`)
-            .then((response) => {
-              return response.json();
-            })
-            .then((data) => {
-              this.countryTotalConfirmed = data[data.length - 1].Confirmed;
-              this.countryTotalRecovered = data[data.length - 1].Recovered;
-              this.countryTotalDeaths = data[data.length - 1].Deaths;
-              /* Добавить функцию заполения таблицы*/
-            });
-            break;
-          case 'live by country': fetch(`https://api.covid19api.com/live/country/${param}`)
-            .then((response) => {
-              return response.json();
-            })
-            .then((data) => {
-              this.countryLiveConfirmed = data[data.length - 1].Confirmed;
-              this.countryLiveRecovered = data[data.length - 1].Recovered;
-              this.countryLiveDeaths = data[data.length - 1].Deaths;
-              /* Добавить функцию заполения таблицы */
-            });
-            break;
-          default: fetch(`https://api.covid19api.com/summary`)
-            .then((response) => {
-              return response.json();
-            })
-            .then((data) => {
-              this.worldTotalConfirmed = data['Global']["TotalConfirmed"];
-              this.worldTotalRecovered = data['Global']["TotalRecovered"];
-              this.worldTotalDeaths = data['Global']["TotalDeaths"];
-              this.worldLiveConfirmed = data['Global']["NewConfirmed"];
-              this.worldLiveRecovered = data['Global']["NewRecovered"];
-              this.worldLiveDeaths = data['Global']["NewDeaths"];
-              /* Добавить функцию заполения таблицы */
-            });
-        }
-    },
+const requestOptions = {
+  method: 'GET',
+  redirect: 'follow'
+};
+
+const fetchInfo = (countryName = 'Belarus', mode = 'world') => {
+  let param = countryName.replace(/ /gi, '-').toLowerCase();
+  let data;
+  if (mode === 'world') {
+    data = fetch(`https://api.covid19api.com/summary`, requestOptions)
+    .then((response) => {
+      return response.json();
+    })
+    .catch(error => console.log('error', error));
+  } else {
+    data = fetch(`https://api.covid19api.com/${mode}/country/${param}`)
+    .then((response) => {
+      return response.json();
+    })
+    .catch(error => console.log('error', error)); 
+  }
+  return data;
 }
 
-/* Вызов метода без параметров возвращает данные за весь период пандемии по всему миру */
+
+export async function getInfo(country, mode) {
+  const result = await fetchInfo(country, mode);
+
+  let statistic = {};
+
+  if(country) {
+      statistic.confirmed = result[result.length - 1]['Confirmed'];
+      statistic.recovered = result[result.length - 1]['Recovered'];
+      statistic.deaths = result[result.length - 1]['Deaths'];
+  } else {
+      statistic.allData = result;
+      statistic.worldTotalConfirmed = result['Global']["TotalConfirmed"];
+      statistic.worldTotalRecovered = result['Global']["TotalRecovered"];
+      statistic.worldTotalDeaths = result['Global']["TotalDeaths"];
+      statistic.worldLiveConfirmed = result['Global']["NewConfirmed"];
+      statistic.worldLiveRecovered = result['Global']["NewRecovered"];
+      statistic.worldLiveDeaths = result['Global']["NewDeaths"];
+  } 
+  return statistic;
+}
