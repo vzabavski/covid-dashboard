@@ -5,7 +5,7 @@ const chart = document.getElementById('myChart');
 
 
 
-function initChart(country = 'world', mode) {
+function initChart(country = 'world', mode='total') {
     if (country !== 'world') {
         getInfo(country, mode)
         .then((data) => {
@@ -81,5 +81,5 @@ function saveSettings(mode) {
     initChart(chart.dataset.value, checkedSetting.value)
 }
 
-initChart('Belarus', 'live')
+initChart()
 
