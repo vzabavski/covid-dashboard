@@ -1,4 +1,5 @@
 import '../styles/style.css'
+
 const fullscreenBtns = document.querySelectorAll(".btn-fullscreen");
 const fullscreens = document.querySelectorAll(".fullscreen");
 

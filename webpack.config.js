@@ -6,7 +6,9 @@ module.exports = {
     context: path.resolve(__dirname, 'src'),
     mode: 'development',
     entry:{
-        script: './scripts/script.js'
+        script: './scripts/script.js',
+        keyboard: './scripts/keyboard.js',
+        map: './scripts/map.js'
     },
     output: {
         filename: '[name].bundle.js',

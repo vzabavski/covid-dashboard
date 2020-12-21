@@ -1,4 +1,4 @@
-import '../styles/style.css'
+import '../styles/map.css'
 import json from './countries.json'
 
 let map = L.map('map').setView([30.505, -0.09], 2);
