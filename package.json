@@ -27,5 +27,10 @@
     "style-loader": "^2.0.0",
     "webpack": "^5.10.3",
     "webpack-cli": "^4.2.0"
+  },
+  "dependencies": {
+    "eslint": "^7.16.0",
+    "eslint-loader": "^4.0.2",
+    "svg-url-loader": "^7.1.1"
   }
 }

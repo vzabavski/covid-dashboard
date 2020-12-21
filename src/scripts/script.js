@@ -1,5 +1,4 @@
 const fullscreenBtns = document.querySelectorAll(".btn-fullscreen");
-const fullscreens = document.querySelectorAll(".fullscreen");
 
 fullscreenBtns.forEach((btn) => {
 	btn.addEventListener('click', function () {
