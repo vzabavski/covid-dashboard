@@ -1,3 +1,5 @@
+import '../styles/style.css'
+
 const fullscreenBtns = document.querySelectorAll(".btn-fullscreen");
 
 fullscreenBtns.forEach((btn) => {

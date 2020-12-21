@@ -1,12 +1,12 @@
-import '../styles/style.css'
+import '../styles/map.css'
 import json from './countries.json'
 
 let map = L.map('map').setView([30.505, -0.09], 2);
-L.tileLayer('https://api.maptiler.com/maps/topo/{z}/{x}/{y}.png?key=ndaPzoGC0TwGF7KGWreC',{
+L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png',{
         tileSize: 512,
         zoomOffset: -1,
         minZoom: 1.5,
-        attribution: "\u003ca href=\"https://www.maptiler.com/copyright/\" target=\"_blank\"\u003e\u0026copy; MapTiler\u003c/a\u003e \u003ca href=\"https://www.openstreetmap.org/copyright\" target=\"_blank\"\u003e\u0026copy; OpenStreetMap contributors\u003c/a\u003e",
+        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>',
         crossOrigin: true
       }).addTo(map);
 
@@ -72,10 +72,10 @@ function countryPointToLayer(feature, latlng) {
     .then((stats) => {
         function style() {
             return {
-                fillColor: '#DA463E',
+                fillColor: 'rgba(217, 38, 38, 0.63)',
                 weight: 2,
                 opacity: 1,
-                color: '#933333',
+                color: '#391212',
                 dashArray: '3',
                 fillOpacity: 0.7
             };
@@ -100,7 +100,7 @@ function countryPointToLayer(feature, latlng) {
             var layer = e.target;
             layer.setStyle({
                 weight: 3,
-                color: '#5A2E2E',
+                color: '#2A0303',
                 dashArray: '',
                 fillOpacity: 0.7
             });

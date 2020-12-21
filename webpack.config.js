@@ -6,7 +6,9 @@ module.exports = {
     context: path.resolve(__dirname, 'src'),
     mode: 'development',
     entry:{
-        script: './scripts/script.js'
+        script: './scripts/script.js',
+        keyboard: './scripts/keyboard.js',
+        map: './scripts/map.js'
     },
     output: {
         filename: '[name].bundle.js',
@@ -18,14 +20,14 @@ module.exports = {
             {
                 test: /\.css$/, 
                 use: [MiniCssExtractPlugin.loader, 'css-loader']
-				},
-				{
-					test: /\.svg/,
-					use: {
-					  loader: "svg-url-loader",
-					  options: {},
-					},
-				}
+            },
+            {
+                test: /\.svg/,
+                use: {
+                  loader: "svg-url-loader",
+                  options: {},
+                },
+            }
         ]
     },
     plugins: [
