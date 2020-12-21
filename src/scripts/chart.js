@@ -5,7 +5,7 @@ const chart = document.getElementById('myChart');
 
 
 
-function initChart(country = 'world', mode='total') {
+export function initChart(country = 'world', mode='total') {
     if (country !== 'world') {
         getInfo(country, mode)
         .then((data) => {
