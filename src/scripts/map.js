@@ -35,7 +35,7 @@ function countryPointToLayer(feature, latlng) {
     }
 
     const html = 
-    `<span class='info ${setSize}'>
+    `<span class='marker ${setSize}'>
         <span>${casesString}</span>
      </span>`;
      return L.marker(latlng, {
