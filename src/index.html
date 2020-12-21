@@ -2,10 +2,13 @@
 <html lang="en">
 
 <head>
-
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<<<<<<< HEAD
 	 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
+=======
+	<link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
+>>>>>>> origin/dev
     integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
     crossorigin=""/>
     <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
@@ -30,7 +33,7 @@
 					<div class="main__global global fullscreen">
 						<button class="btn-fullscreen"></button>
 						<h2 class="global__title">Global Cases</h2>
-						<p class="global__cases">72 098 345</p>
+						<p class="global__cases"></p>
 					</div>
 					<div class="main__list list fullscreen">
 						<button class="btn-keyboard"></button>
@@ -206,6 +209,23 @@
 				</div>
 			</div>
 		</div>
+		
+			<form class="charSettings">
+				<p>Select mode:</p>
+				<input type="radio" id="total" name="mode" value="total" checked>
+				<label for="total">Total</label><br>
+				<input type="radio" id="live" name="mode" value="live">
+				<label for="live">Live</label><br>
+				<button type="button" id="save_mode">Save</button>
+			  
+				<p>Select count mode:</p>
+				<input type="radio" id="absolute" name="count" value="absolute" checked>
+				<label for="absolute">Absolute</label><br>
+				<input type="radio" id="per" name="count" value="per">
+				<label for="per">per 100 000 people</label><br>
+				<button type="button" id="save_count">Save</button>
+			  </form>
+		<canvas id="myChart" data-value="world"></canvas>
 	</main>
 
 	<footer class="footer">
@@ -219,6 +239,10 @@
 			</div>
 		</div>
 	</footer>
+<<<<<<< HEAD
+=======
+
+>>>>>>> origin/dev
 
 </body>
 

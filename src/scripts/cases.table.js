@@ -1,80 +1,88 @@
 const searchInput = document.querySelector('.form__input')
+let countryData = {}
 let searchTerm = ''
 let tableMode = 'Total cases'
-async function getInfo(url = 'https://api.covid19api.com/summary', url1 = 'https://corona.lmao.ninja/v2/countries', mode = 'Total cases') {
+
+async function getInfo(url = 'https://disease.sh/v3/covid-19/countries', url1 = 'https://corona.lmao.ninja/v2/countries', mode = 'Total cases', countryInfo) {
   let sortingValue = mode
   const response = await fetch(url)
   const response1 = await fetch(url1)
   const data = await response.json()
   const data1 = await response1.json()
-  let covidData = [...data.Countries]
+  let covidData = [...data]
   let PopulationData = [...data1]
+  let total = 0
+  covidData.map((a) => total += a.cases)
+
   // add needed info from different API's to covidData (to the HEAP object)
   for (let i = 0; i < covidData.length; i++) {
     for (let j = 0; j < PopulationData.length; j++) {
-      if (covidData[i].Country.toLowerCase() === PopulationData[j].country.toLowerCase()) {
+      if (covidData[i].country.toLowerCase() === PopulationData[j].country.toLowerCase()) {
         covidData[i].population = PopulationData[j].population
       }
     }
   }
-
-  if (data && data1) {
+  console.log(covidData)
+ //-----------ЕСЛИ НАДО ОСТАВИТЬ ЕСЛИ НЕТ-УБРАТЬ--------//
+  if (!countryInfo) {
     drawTable(covidData, sortingValue)
+  }else if(countryInfo){
+  drawTable([countryInfo], sortingValue)
   }
+  document.querySelector('.global__cases').innerText = total
 }
 getInfo()
 
 function drawTable(data, sortedMode) {
   if (document.querySelector('table')) {
     document.querySelector('table').remove();
-  }
-  const statistic = document.createElement('table');
-  statistic.className = 'statistic-table'
-  document.querySelector('.list__nav').append(statistic);
+  } 
+    //ЕСЛИ НАДО ОСТАВИТЬ ЕСЛИ НЕТ-УБРАТЬ
+  let statistic = new DOMelement('table','.list__nav','statistic-table','', 'click', () => getInfo())
+  let tableTopicRow
   data
-    .filter(country => country.Country.toLowerCase().includes(searchTerm.toLowerCase()))
+    .filter(country => country.country.toLowerCase().includes(searchTerm.toLowerCase()))
     .map((country) => {
-      const tableTopicRow = document.createElement('tr');
       if (country.population !== 0) {
         switch (sortedMode) {
           case 'Total cases':
-            fillUpElement(tableTopicRow, 'table', 'table-topic', `<td><img src="https://disease.sh/assets/img/flags/${country.CountryCode.toLowerCase()}.png" alt="flag" style ="width: 75px;height: 50px;"></td><td>${country.Country}</td><td class="cases-column" >${country.TotalConfirmed}</td>`)
+            tableTopicRow = new DOMelement('tr', 'table', 'table-topic', `<td><img src=${country.countryInfo.flag} alt="flag" style ="width: 75px;height: 50px;"></td><td>${country.country}</td><td class="cases-column" >${country.cases}</td>`, 'click', (e) => { getCountryInfo(e) })
             break;
           case 'Total deaths':
-            fillUpElement(tableTopicRow, 'table', 'table-topic', `<td><img src="https://disease.sh/assets/img/flags/${country.CountryCode.toLowerCase()}.png" alt="flag" style ="width: 75px;height: 50px;"></td><td>${country.Country}</td><td class="cases-column" >${country.TotalDeaths}</td>`)
+            tableTopicRow = new DOMelement('tr', 'table', 'table-topic', `<td><img src=${country.countryInfo.flag} alt="flag" style ="width: 75px;height: 50px;"></td><td>${country.country}</td><td class="cases-column" >${country.deaths}</td>`, 'click', (e) => { getCountryInfo(e) })
             break;
           case 'Total recovered':
-            fillUpElement(tableTopicRow, 'table', 'table-topic', `<td><img src="https://disease.sh/assets/img/flags/${country.CountryCode.toLowerCase()}.png" alt="flag" style ="width: 75px;height: 50px;"></td><td>${country.Country}</td><td class="cases-column" >${country.TotalRecovered}</td>`)
+            tableTopicRow = new DOMelement('tr', 'table', 'table-topic', `<td><img src=${country.countryInfo.flag} alt="flag" style ="width: 75px;height: 50px;"></td><td>${country.country}</td><td class="cases-column" >${country.recovered}</td>`, 'click', (e) => { getCountryInfo(e) })
             break;
           case 'Today cases':
-            fillUpElement(tableTopicRow, 'table', 'table-topic', `<td><img src="https://disease.sh/assets/img/flags/${country.CountryCode.toLowerCase()}.png" alt="flag" style ="width: 75px;height: 50px;"></td><td>${country.Country}</td><td class="cases-column" >${country.NewConfirmed}</td>`)
+            tableTopicRow = new DOMelement('tr', 'table', 'table-topic', `<td><img src=${country.countryInfo.flag} alt="flag" style ="width: 75px;height: 50px;"></td><td>${country.country}</td><td class="cases-column" >${country.todayCases}</td>`, 'click', (e) => { getCountryInfo(e) })
             break;
           case 'Today deaths':
-            fillUpElement(tableTopicRow, 'table', 'table-topic', `<td><img src="https://disease.sh/assets/img/flags/${country.CountryCode.toLowerCase()}.png" alt="flag" style ="width: 75px;height: 50px;"></td><td>${country.Country}</td><td class="cases-column" >${country.NewDeaths}</td>`)
+            tableTopicRow = new DOMelement('tr', 'table', 'table-topic', `<td><img src=${country.countryInfo.flag} alt="flag" style ="width: 75px;height: 50px;"></td><td>${country.country}</td><td class="cases-column" >${country.todayDeaths}</td>`, 'click', (e) => { getCountryInfo(e) })
             break;
           case 'Today recovered':
-            fillUpElement(tableTopicRow, 'table', 'table-topic', `<td><img src="https://disease.sh/assets/img/flags/${country.CountryCode.toLowerCase()}.png" alt="flag" style ="width: 75px;height: 50px;"></td><td>${country.Country}</td><td class="cases-column" >${country.NewRecovered}</td>`)
+            tableTopicRow = new DOMelement('tr', 'table', 'table-topic', `<td><img src=${country.countryInfo.flag} alt="flag" style ="width: 75px;height: 50px;"></td><td>${country.country}</td><td class="cases-column" >${country.todayRecovered}</td>`, 'click', (e) => { getCountryInfo(e) })
             break;
           case 'Total cases per 100.000 population':
-            fillUpElement(tableTopicRow, 'table', 'table-topic', `<td><img src="https://disease.sh/assets/img/flags/${country.CountryCode.toLowerCase()}.png" alt="flag" style ="width: 75px;height: 50px;"></td><td>${country.Country}</td><td class="cases-column" >${countTotalPerValue(country.TotalConfirmed, country.population)}</td>`)
+            tableTopicRow = new DOMelement('tr', 'table', 'table-topic', `<td><img src=${country.countryInfo.flag} alt="flag" style ="width: 75px;height: 50px;"></td><td>${country.country}</td><td class="cases-column" >${countTotalPerValue(country.cases, country.population)}</td>`, 'click', (e) => { getCountryInfo(e) })
             break;
           case 'Total deaths per 100.000 population':
-            fillUpElement(tableTopicRow, 'table', 'table-topic', `<td><img src="https://disease.sh/assets/img/flags/${country.CountryCode.toLowerCase()}.png" alt="flag" style ="width: 75px;height: 50px;"></td><td>${country.Country}</td><td class="cases-column" >${countTotalPerValue(country.TotalDeaths, country.population)}</td>`)
+            tableTopicRow = new DOMelement('tr', 'table', 'table-topic', `<td><img src=${country.countryInfo.flag} alt="flag" style ="width: 75px;height: 50px;"></td><td>${country.country}</td><td class="cases-column" >${countTotalPerValue(country.deaths, country.population)}</td>`, 'click', (e) => { getCountryInfo(e) })
             break;
           case 'Total recovered per 100.000 population':
-            fillUpElement(tableTopicRow, 'table', 'table-topic', `<td><img src="https://disease.sh/assets/img/flags/${country.CountryCode.toLowerCase()}.png" alt="flag" style ="width: 75px;height: 50px;"></td><td>${country.Country}</td><td class="cases-column" >${countTotalPerValue(country.TotalRecovered, country.population)}</td>`)
+            tableTopicRow = new DOMelement('tr', 'table', 'table-topic', `<td><img src=${country.countryInfo.flag} alt="flag" style ="width: 75px;height: 50px;"></td><td>${country.country}</td><td class="cases-column" >${countTotalPerValue(country.recovered, country.population)}</td>`, 'click', (e) => { getCountryInfo(e) })
             break;
           case 'Today cases per 100.000 population':
-            fillUpElement(tableTopicRow, 'table', 'table-topic', `<td><img src="https://disease.sh/assets/img/flags/${country.CountryCode.toLowerCase()}.png" alt="flag" style ="width: 75px;height: 50px;"></td><td>${country.Country}</td><td class="cases-column" >${countTotalPerValue(country.NewConfirmed, country.population)}</td>`)
+            tableTopicRow = new DOMelement('tr', 'table', 'table-topic', `<td><img src=${country.countryInfo.flag} alt="flag" style ="width: 75px;height: 50px;"></td><td>${country.country}</td><td class="cases-column" >${countTotalPerValue(country.todayCases, country.population)}</td>`, 'click', (e) => { getCountryInfo(e) })
             break;
           case 'Today deaths per 100.000 population':
-            fillUpElement(tableTopicRow, 'table', 'table-topic', `<td><img src="https://disease.sh/assets/img/flags/${country.CountryCode.toLowerCase()}.png" alt="flag" style ="width: 75px;height: 50px;"></td><td>${country.Country}</td><td class="cases-column" >${countTotalPerValue(country.NewDeaths, country.population)}</td>`)
+            tableTopicRow = new DOMelement('tr', 'table', 'table-topic', `<td><img src=${country.countryInfo.flag} alt="flag" style ="width: 75px;height: 50px;"></td><td>${country.country}</td><td class="cases-column" >${countTotalPerValue(country.todayDeaths, country.population)}</td>`, 'click', (e) => { getCountryInfo(e) })
             break;
           case 'Today recovered per 100.000 population':
-            fillUpElement(tableTopicRow, 'table', 'table-topic', `<td><img src="https://disease.sh/assets/img/flags/${country.CountryCode.toLowerCase()}.png" alt="flag" style ="width: 75px;height: 50px;"></td><td>${country.Country}</td><td class="cases-column" >${countTotalPerValue(country.NewRecovered, country.population)}</td>`)
+            tableTopicRow = new DOMelement('tr', 'table', 'table-topic', `<td><img src=${country.countryInfo.flag} alt="flag" style ="width: 75px;height: 50px;"></td><td>${country.country}</td><td class="cases-column" >${countTotalPerValue(country.todayRecovered, country.population)}</td>`, 'click', (e) => { getCountryInfo(e) })
             break;
           default:
-            fillUpElement(tableTopicRow, 'table', 'table-topic', `<td><img src="https://disease.sh/assets/img/flags/${country.CountryCode.toLowerCase()}.png" alt="flag" style ="width: 75px;height: 50px;"></td><td>${country.Country}</td><td class="cases-column" >${country.TotalConfirmed}</td>`)
+            tableTopicRow = new DOMelement('tr', 'table', 'table-topic', `<td><img src=${country.countryInfo.flag} alt="flag" style ="width: 75px;height: 50px;"></td><td>${country.country}</td><td class="cases-column" >${country.cases}</td>`, 'click', (e) => { getCountryInfo(e) })
         }
       }
     })
@@ -89,7 +97,21 @@ function drawTable(data, sortedMode) {
     let detatchedItem = parent.removeChild(item);
     parent.append(detatchedItem);
   })
+
+  function getCountryInfo(e) {
+    data.map(country => {
+      if (country.country === e.currentTarget.children[1].innerHTML) {
+        countryData = country
+        console.log(countryData)
+            //ЕСЛИ НАДО ОСТАВИТЬ ЕСЛИ НЕТ-УБРАТЬ СОБЫТИЕ С КЛИКА ПО ЭЛЕЕМНТУ
+        //getInfo(https://disease.sh/v3/covid-19/countries, 'https://corona.lmao.ninja/v2/countries',tableMode , countryData)
+        return country
+      }
+    })
+  }
+  return tableTopicRow, statistic
 }
+
 // count cases per 100.000 people
 function countTotalPerValue(cases, population) {
   return (cases / population) ? (cases / population * 100000).toFixed(0) : 0
@@ -98,43 +120,30 @@ function countTotalPerValue(cases, population) {
 searchInput.addEventListener('input', (e) => searchCountry(e.target.value))
 function searchCountry(letter) {
   searchTerm = letter;
-  getInfo('https://api.covid19api.com/summary', 'https://corona.lmao.ninja/v2/countries', tableMode)
+  getInfo('https://disease.sh/v3/covid-19/countries', 'https://corona.lmao.ninja/v2/countries', tableMode)
 }
-// function DOM elements filler
-function fillUpElement(element, selector, cssClass, inner = '', event, callback) {
-  document.querySelectorAll(selector).forEach((item) => {
-    item.append(element);
-  });
-  element.className = cssClass;
-  element.innerHTML = inner;
-  element.addEventListener(event, callback);
-}
+
 // select type of sorting
 document.querySelector('.select').addEventListener('click', (e) => {
   if (e.target.dataset.value) {
     tableMode = e.target.dataset.value
-    getInfo('https://api.covid19api.com/summary', 'https://corona.lmao.ninja/v2/countries', e.target.dataset.value)
+    getInfo('https://disease.sh/v3/covid-19/countries', 'https://corona.lmao.ninja/v2/countries', e.target.dataset.value)
   }
 })
-
+//create and fill DOM element
+class DOMelement {
+  constructor(tagName = 'div', selector, className = '', inner = '', event, callback) {
+    let el = document.createElement(tagName);
+    document.querySelectorAll(selector).forEach((item) => { item.append(el) })
+    el.className = className;
+    el.innerHTML = inner
+    el.addEventListener(event, callback);
+    this.node = el;
+  }
+}
 //https://corona-api.com/countries
 //https://corona.lmao.ninja/v2/countries
 //https://api.covid19api.com/summary
+//https://disease.sh/v3/covid-19/countries
 
 export { searchInput, searchCountry }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

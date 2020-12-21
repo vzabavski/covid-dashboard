@@ -7,8 +7,10 @@ module.exports = {
     mode: 'development',
     entry:{
         script: './scripts/script.js',
+        chart: './scripts/chart.js',
         keyboard: './scripts/keyboard.js',
-        map: './scripts/map.js'
+        map: './scripts/map.js',
+        table:'./scripts/cases.table.js'
     },
     output: {
         filename: '[name].bundle.js',
@@ -16,7 +18,11 @@ module.exports = {
     },
     module: {
         rules: [
+<<<<<<< HEAD
             // { enforce: 'pre', test: /\.js$/, loader: "eslint-loader"},
+=======
+            //{ enforce: 'pre', test: /\.js$/, loader: "eslint-loader"},
+>>>>>>> origin/dev
             {
                 test: /\.css$/, 
                 use: [MiniCssExtractPlugin.loader, 'css-loader']
