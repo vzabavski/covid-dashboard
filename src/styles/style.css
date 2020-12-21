@@ -483,6 +483,8 @@ h6 {
 }
 
 .statistic-table{
+  width: 100%;
+  border-spacing: 0 5px;
   padding: 5px;
   text-align: center;
   color: white;
@@ -534,6 +536,15 @@ h6 {
           transform: rotate(180deg);
   left: auto;
   right: 10px;
+}
+
+.table-topic{
+ cursor: pointer;
+}
+
+.table-topic:hover{
+  background-color: rgba(95, 90, 90, 0.76);
+  color:rgb(255, 255, 255);
 }
 
 .table td, .table th {
