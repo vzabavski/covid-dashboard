@@ -10,26 +10,6 @@
 /******/ 	"use strict";
 /******/ 	var __webpack_modules__ = ({
 
-/***/ "./scripts/script.js":
-/*!***************************!*\
-  !*** ./scripts/script.js ***!
-  \***************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _styles_style_css__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../styles/style.css */ \"./styles/style.css\");\n/* harmony import */ var _styles_map_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../styles/map.css */ \"./styles/map.css\");\n\r\n\r\n\r\nconst fullscreenBtns = document.querySelectorAll(\".btn-fullscreen\");\r\n\r\nfullscreenBtns.forEach((btn) => {\r\n\tbtn.addEventListener('click', function () {\r\n\t\tthis.parentNode.classList.toggle(\"open\");\r\n\t})\r\n})\r\n\r\nconst selectSingle = document.querySelector('.select');\r\nconst selectSingle_title = selectSingle.querySelector('.select__title');\r\nconst selectSingle_labels = selectSingle.querySelectorAll('.select__label');\r\n\r\nselectSingle_title.addEventListener('click', () => {\r\n  if ('active' === selectSingle.getAttribute('data-state')) {\r\n    selectSingle.setAttribute('data-state', '');\r\n  } else {\r\n    selectSingle.setAttribute('data-state', 'active');\r\n  }\r\n});\r\n\r\nfor (let i = 0; i < selectSingle_labels.length; i++) {\r\n  selectSingle_labels[i].addEventListener('click', (evt) => {\r\n    selectSingle_title.textContent = evt.target.textContent;\r\n    selectSingle.setAttribute('data-state', '');\r\n  });\r\n}\r\n\r\n\n\n//# sourceURL=webpack:///./scripts/script.js?");
-
-/***/ }),
-
-/***/ "./styles/map.css":
-/*!************************!*\
-  !*** ./styles/map.css ***!
-  \************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-eval("__webpack_require__.r(__webpack_exports__);\n// extracted by mini-css-extract-plugin\n\n\n//# sourceURL=webpack:///./styles/map.css?");
-
-/***/ }),
-
 /***/ "./styles/style.css":
 /*!**************************!*\
   !*** ./styles/style.css ***!
@@ -37,6 +17,16 @@ eval("__webpack_require__.r(__webpack_exports__);\n// extracted by mini-css-extr
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 eval("__webpack_require__.r(__webpack_exports__);\n// extracted by mini-css-extract-plugin\n\n\n//# sourceURL=webpack:///./styles/style.css?");
+
+/***/ }),
+
+/***/ "./scripts/script.js":
+/*!***************************!*\
+  !*** ./scripts/script.js ***!
+  \***************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _styles_style_css__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../styles/style.css */ \"./styles/style.css\");\n\r\n\r\nconst fullscreenBtns = document.querySelectorAll(\".btn-fullscreen\");\r\n\r\nfullscreenBtns.forEach((btn) => {\r\n\tbtn.addEventListener('click', function () {\r\n\t\tthis.parentNode.classList.toggle(\"open\");\r\n\t})\r\n})\r\n\r\nconst selectSingle = document.querySelector('.select');\r\nconst selectSingle_title = selectSingle.querySelector('.select__title');\r\nconst selectSingle_labels = selectSingle.querySelectorAll('.select__label');\r\n\r\nselectSingle_title.addEventListener('click', () => {\r\n  if ('active' === selectSingle.getAttribute('data-state')) {\r\n    selectSingle.setAttribute('data-state', '');\r\n  } else {\r\n    selectSingle.setAttribute('data-state', 'active');\r\n  }\r\n});\r\n\r\nfor (let i = 0; i < selectSingle_labels.length; i++) {\r\n  selectSingle_labels[i].addEventListener('click', (evt) => {\r\n    selectSingle_title.textContent = evt.target.textContent;\r\n    selectSingle.setAttribute('data-state', '');\r\n  });\r\n}\r\n\r\n\n\n//# sourceURL=webpack:///./scripts/script.js?");
 
 /***/ })
 

@@ -5,8 +5,6 @@
 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-	 <!-- <link type="text/css" rel="stylesheet" href="./styles/style.css"> -->
-	 <!-- <link type="text/css" rel="stylesheet" href="./styles/map.css"> -->
 	 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
     integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
     crossorigin=""/>
@@ -14,7 +12,7 @@
     integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
     crossorigin=""></script>
     <title>COVID-19 Dashboard</title>
-<link href="script.bundle.css" rel="stylesheet"></head>
+<link href="script.bundle.css" rel="stylesheet"><link href="map.bundle.css" rel="stylesheet"></head>
 
 <body>
 	<header class="header">
@@ -221,14 +219,7 @@
 			</div>
 		</div>
 	</footer>
-	<script src="./scripts/map.js" type="module"></script>
-	<script src="./scripts/script.js" type="module"></script>
 
-	<script src="./scripts/countries.data.js" type="module"></script>
-	<script src="./scripts/stats.data.js" type="module"></script>
-	<script src="./scripts/cases.table.js" type="module"></script>
-	<script src="./scripts/keyboard.js" type="module"></script>
-
-<script src="script.bundle.js"></script></body>
+<script src="script.bundle.js"></script><script src="keyboard.bundle.js"></script><script src="map.bundle.js"></script></body>
 
 </html>
