@@ -8,7 +8,8 @@ module.exports = {
     entry:{
         script: './scripts/script.js',
         keyboard: './scripts/keyboard.js',
-        map: './scripts/map.js'
+        map: './scripts/map.js',
+        table:'./scripts/cases.table.js'
     },
     output: {
         filename: '[name].bundle.js',
