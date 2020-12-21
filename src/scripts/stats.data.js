@@ -32,6 +32,7 @@ export async function getInfo(country, mode) {
       statistic.confirmed = result[result.length - 1]['Confirmed'];
       statistic.recovered = result[result.length - 1]['Recovered'];
       statistic.deaths = result[result.length - 1]['Deaths'];
+      statistic.allData = result;
   } else {
       statistic.allData = result;
       statistic.worldTotalConfirmed = result['Global']["TotalConfirmed"];

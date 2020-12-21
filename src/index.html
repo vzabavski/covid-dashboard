@@ -2,12 +2,9 @@
 <html lang="en">
 
 <head>
-
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-	 <link type="text/css" rel="stylesheet" href="./styles/style.css">
-	 <link type="text/css" rel="stylesheet" href="./styles/map.css">
-	 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
+	<link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
     integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
     crossorigin=""/>
     <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
@@ -208,6 +205,23 @@
 				</div>
 			</div>
 		</div>
+		
+			<form class="charSettings">
+				<p>Select mode:</p>
+				<input type="radio" id="total" name="mode" value="total" checked>
+				<label for="total">Total</label><br>
+				<input type="radio" id="live" name="mode" value="live">
+				<label for="live">Live</label><br>
+				<button type="button" id="save_mode">Save</button>
+			  
+				<p>Select count mode:</p>
+				<input type="radio" id="absolute" name="count" value="absolute" checked>
+				<label for="absolute">Absolute</label><br>
+				<input type="radio" id="per" name="count" value="per">
+				<label for="per">per 100 000 people</label><br>
+				<button type="button" id="save_count">Save</button>
+			  </form>
+		<canvas id="myChart" data-value="world"></canvas>
 	</main>
 
 	<footer class="footer">
@@ -221,13 +235,7 @@
 			</div>
 		</div>
 	</footer>
-	<script src="./scripts/map.js" type="module"></script>
-	<script src="./scripts/script.js" type="module"></script>
 
-	<script src="./scripts/countries.data.js" type="module"></script>
-	<script src="./scripts/stats.data.js" type="module"></script>
-	<script src="./scripts/cases.table.js" type="module"></script>
-	<script src="./scripts/keyboard.js" type="module"></script>
 
 </body>
 

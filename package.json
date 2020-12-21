@@ -28,5 +28,8 @@
     "svg-url-loader": "^7.1.1",
     "webpack": "^5.10.3",
     "webpack-cli": "^4.2.0"
+  },
+  "dependencies": {
+    "chart.js": "^2.9.4"
   }
 }

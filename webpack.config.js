@@ -7,6 +7,7 @@ module.exports = {
     mode: 'development',
     entry:{
         script: './scripts/script.js',
+        chart: './scripts/chart.js',
         keyboard: './scripts/keyboard.js',
         map: './scripts/map.js'
     },
@@ -16,7 +17,7 @@ module.exports = {
     },
     module: {
         rules: [
-            { enforce: 'pre', test: /\.js$/, loader: "eslint-loader"},
+            //{ enforce: 'pre', test: /\.js$/, loader: "eslint-loader"},
             {
                 test: /\.css$/, 
                 use: [MiniCssExtractPlugin.loader, 'css-loader']
