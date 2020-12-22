@@ -1,19 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-	 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
+	<link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
     integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
     crossorigin=""/>
     <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
     integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
     crossorigin=""></script>
     <title>COVID-19 Dashboard</title>
-<link href="script.bundle.css" rel="stylesheet"><link href="map.bundle.css" rel="stylesheet"></head>
-
+<link href="script.bundle.css" rel="stylesheet"><link href="chart.bundle.css" rel="stylesheet"><link href="map.bundle.css" rel="stylesheet"></head>
 <body>
 	<header class="header">
 		<div class='container'>
@@ -25,12 +22,16 @@
 	</header>
 	<main class="main">
 		<div class='container'>
+			<div class="main__burger burger">
+				<button class="burger__btn burger__btn_left">Cases by Country/Region/Sovereignty</button>
+				<button class="burger__btn burger__btn_right">Table and Chart</button>
+			</div>
 			<div class="main__body">
 				<div class="main__left-column">
 					<div class="main__global global fullscreen">
 						<button class="btn-fullscreen"></button>
 						<h2 class="global__title">Global Cases</h2>
-						<p class="global__cases">72 098 345</p>
+						<p class="global__cases"></p>
 					</div>
 					<div class="main__list list fullscreen">
 						<button class="btn-keyboard"></button>
@@ -39,7 +40,6 @@
 							<h2 class="list__title">Cases by Country/Region/Sovereignty</h2>
 							<form class="list__form form" action="" method="get">
 								<input class="form__input" placeholder="Search..." type="text">
-								<!--<button class="form__button" type="submit"></button>-->
 							</form>
 							<form>
 								<div class="select" data-state="">
@@ -97,10 +97,7 @@
 								</div>
 							</form>
 						</div>
-						<div class="list__nav">
-							<!--<li><span class="list__counter">3 457 327</span><span class="list__country">Belarus</span></li>-->
-
-						</div>
+						<div class="list__nav"></div>
 					</div>
 				</div>
 				<div class="main__map map fullscreen">
@@ -112,10 +109,10 @@
 					<div class="main__table table fullscreen">
 						<button class="btn-fullscreen"></button>
 						<table class="table__body">
-							<caption>
-								<button class="table__btn"></button>
-								Total
-								<button class="table__btn table__btn_right"></button>
+							<caption class="mode_place">
+								<button class="table__btn mode_switch_left"></button>
+								<div class="table_mode">Total</div>
+								<button class="table__btn table__btn_right mode_switch_right"></button>
 							</caption>
 							<thead>
 								<tr>
@@ -125,17 +122,41 @@
 									<th>Recovered</th>
 								</tr>
 							</thead>
-							<tbody>
-								<tr>
-									<td>Belarus</td>
-									<td>325365</td>
-									<td>3822</td>
-									<td>452828</td>
+							<tbody class="table_entity">
+								<tr class="table_row">
+									<td class="country"></td>
+									<td class="cases"></td>
+									<td class="deaths"></td>
+									<td class="recovered"></td>
 								</tr>
 							</tbody>
 						</table>
 					</div>
-					<div class="main__chart chart">
+					<div class="main__chart chart fullscreen">
+						<button class="btn-fullscreen"></button>
+						<form class="chart__form form-chart">
+							<p class="form-chart__title">Select mode:</p>
+							<div class="form-chart__line">
+								<input class="form-chart__radio" type="radio" id="total" name="mode" value="total" checked>
+								<label class="form-chart__label" for="total">Total</label>
+							</div>
+							<div class="form-chart__line">
+								<input class="form-chart__radio" type="radio" id="live" name="mode" value="live">
+								<label class="form-chart__label" for="live">Live</label>
+							</div>
+							<button class="form-chart__btn" type="button" id="save_mode">Save</button>
+							<p class="form-chart__title">Select count mode:</p>
+							<div class="form-chart__line">
+								<input class="form-chart__radio" type="radio" id="absolute" name="count" value="absolute" checked>
+								<label class="form-chart__label" for="absolute">Absolute</label>
+							</div>
+							<div class="form-chart__line">
+								<input class="form-chart__radio" type="radio" id="per" name="count" value="per">
+								<label class="form-chart__label" for="per">per 100 000 people</label>
+							</div>
+							<button class="form-chart__btn" type="button" id="save_count">Save</button>
+						</form>
+						<canvas id="myChart" data-value="world"></canvas>
 					</div>
 				</div>
 				<div class="keyboard hidden">
@@ -207,19 +228,19 @@
 			</div>
 		</div>
 	</main>
-
 	<footer class="footer">
 		<div class='container'>
 			<div class="footer__body">
-				<div class="footer__rss">
-					<a class="footer__logo" href="https://rs.school/js/" target="blank"><img
-							src="assets/image/rs_school_js.svg" alt=""></a>
+				<div class="footer__author">Created by 
+					<a class="footer__author_link" href="" target="blank">DeLarge Alex,</a>
+					<a class="footer__author_link" href="https://github.com/andrew-soldat" target="blank">Andrew Blishch,</a>
+					<a class="footer__author_link" href="" target="blank">Gordey Druzhina,</a>
+					<a class="footer__author_link" href="" target="blank">Павел Махнач</a>
+					for the<a class="footer__logo" href="https://rs.school/js/" target="blank"><img src="assets/image/rs_school_js.svg" alt=""></a>
 				</div>
-				<div class="footer__author">© 2020 <a class="footer__author_link" href="" target="blank"></a></div>
+				<div class="footer__copyright">© 2020</div>
 			</div>
 		</div>
 	</footer>
-
-<script src="script.bundle.js"></script><script src="keyboard.bundle.js"></script><script src="map.bundle.js"></script></body>
-
+<script src="script.bundle.js"></script><script src="chart.bundle.js"></script><script src="keyboard.bundle.js"></script><script src="map.bundle.js"></script><script src="table.bundle.js"></script><script src="rtable.bundle.js"></script></body>
 </html>

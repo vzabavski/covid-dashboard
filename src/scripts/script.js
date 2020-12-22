@@ -27,3 +27,16 @@ for (let i = 0; i < selectSingle_labels.length; i++) {
   });
 }
 
+const btnBurgerLeft = document.querySelector('.burger__btn_left');
+const leftColumn = document.querySelector('.main__left-column');
+btnBurgerLeft.addEventListener('click', function () {
+	btnBurgerLeft.classList.toggle("active");
+	leftColumn.classList.toggle("active");
+})
+
+const btnBurgerRight = document.querySelector('.burger__btn_right');
+const rightColumn = document.querySelector('.main__right-column');
+btnBurgerRight.addEventListener('click', function () {
+	btnBurgerRight.classList.toggle("active");
+	rightColumn.classList.toggle("active");
+})

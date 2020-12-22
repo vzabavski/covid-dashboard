@@ -1,0 +1,15 @@
+#myChart {
+    width: 400px;
+    height: 350px;
+}
+.charSettings {
+    color: aliceblue;
+}
+.charSettings button {
+    width: 50px;
+    height: 40px;
+    background: rgb(243, 213, 201);
+    border: none;
+    border-radius: 5px;
+    margin: 5px;
+}

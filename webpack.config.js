@@ -19,11 +19,7 @@ module.exports = {
     },
     module: {
         rules: [
-<<<<<<< HEAD
-            // { enforce: 'pre', test: /\.js$/, loader: "eslint-loader"},
-=======
             //{ enforce: 'pre', test: /\.js$/, loader: "eslint-loader"},
->>>>>>> origin/dev
             {
                 test: /\.css$/, 
                 use: [MiniCssExtractPlugin.loader, 'css-loader']
