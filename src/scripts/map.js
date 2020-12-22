@@ -158,3 +158,6 @@ legend.onAdd = () => {
 };
 
 legend.addTo(map);
+
+
+export * from './map.js'

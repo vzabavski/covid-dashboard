@@ -1,3 +1,4 @@
+import '../styles/table.css'
 let tableEntity = document.querySelector('.table_entity');
 
 let tableMode = document.querySelector('.table_mode');

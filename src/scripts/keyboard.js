@@ -144,3 +144,6 @@ function backSp() {
 BackSpace.addEventListener('click', backSp);
 shift__btn.addEventListener('click', shiftFunc);
 caps.addEventListener('click', capsFunc);
+
+
+export * from './keyboard.js'
