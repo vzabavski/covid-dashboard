@@ -4,6 +4,11 @@ let tableMode = document.querySelector('.table_mode');
 let switchModeLeft = document.querySelector('.mode_switch_left');
 let switchModeRight = document.querySelector('.mode_switch_right');
 
+let country = document.querySelector('.country')
+let cases = document.querySelector('.cases')
+let deaths = document.querySelector('.deaths')
+let recovered = document.querySelector('.recovered')
+
 let modes = ['Total', 'Of the last day', 'Total per 100 thousand population', 'Based on 100 thousand population of the last day'];
 let currMode = tableMode.innerHTML;
 let currStat;
@@ -38,10 +43,6 @@ function switchRight() {
 
 
 function createCountryRow(stat) {
-    let country = document.querySelector('.country')
-    let cases = document.querySelector('.cases')
-    let deaths = document.querySelector('.deaths')
-    let recovered = document.querySelector('.recovered')
     if (currMode === 'Total') {
         country.innerHTML = stat.country;
         cases.innerHTML = stat.cases;
@@ -110,11 +111,6 @@ async function getInf(url = 'https://disease.sh/v3/covid-19/countries', url1 = '
         population: totalPopulation
     }
 
-    console.log(covidData);
-    console.log(totalCases);
-    console.log(totalDeaths);
-    console.log(totalRecovered);
-
     for (let i = 0; i < covidData.length; i++) {
         for (let j = 0; j < PopulationData.length; j++) {
             if (covidData[i].country.toLowerCase() === PopulationData[j].country.toLowerCase()) {
@@ -124,7 +120,12 @@ async function getInf(url = 'https://disease.sh/v3/covid-19/countries', url1 = '
     }
     if (!country) {
         createCountryRow(totalObj);
-        console.log(currStat);
+    } else {
+        for(let i = 0; i< covidData.length; i++) {
+            if(country === covidData[i].country) {
+                createCountryRow(covidData[i]);
+            }
+        }
     }
 }
 
