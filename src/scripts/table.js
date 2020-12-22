@@ -130,3 +130,5 @@ async function getInf(url = 'https://disease.sh/v3/covid-19/countries', url1 = '
 }
 
 getInf();
+
+export { getInf }
