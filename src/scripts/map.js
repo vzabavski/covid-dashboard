@@ -1,6 +1,7 @@
 import '../styles/map.css'
 import json from './countries.json'
 import {initChart} from './chart'
+import {getInf} from './table'
 
 let map = L.map('map').setView([30.505, -0.09], 2);
 L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png',{
@@ -120,6 +121,7 @@ function countryPointToLayer(feature, latlng) {
             let countryName = e.target.feature.properties.ADMIN;
             map.fitBounds(e.target.getBounds());
             initChart(countryName)
+            getInf('https://disease.sh/v3/covid-19/countries', 'https://corona.lmao.ninja/v2/countries', countryName)
         };
 
         function onEachCountry(_, layer) {
