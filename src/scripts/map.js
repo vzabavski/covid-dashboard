@@ -1,5 +1,6 @@
 import '../styles/map.css'
 import json from './countries.json'
+import {initChart} from './chart'
 
 let map = L.map('map').setView([30.505, -0.09], 2);
 L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png',{
@@ -35,7 +36,7 @@ function countryPointToLayer(feature, latlng) {
     }
 
     const html = 
-    `<span class='info ${setSize}'>
+    `<span class='marker ${setSize}'>
         <span>${casesString}</span>
      </span>`;
      return L.marker(latlng, {
@@ -116,7 +117,9 @@ function countryPointToLayer(feature, latlng) {
             
         };
         function zoomToCountry(e) {
+            let countryName = e.target.feature.properties.ADMIN;
             map.fitBounds(e.target.getBounds());
+            initChart(countryName)
         };
 
         function onEachCountry(_, layer) {
