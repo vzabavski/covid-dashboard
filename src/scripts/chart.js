@@ -5,7 +5,7 @@ const chart = document.getElementById('myChart');
 
 
 
-function initChart(country = 'world', mode='total') {
+export function initChart(country = 'world', mode='total') {
     if (country !== 'world') {
         getInfo(country, mode)
         .then((data) => {
@@ -21,7 +21,7 @@ function initChart(country = 'world', mode='total') {
             .then(response => response.json())
             .then((info) => {
                 let [cases, date] = createCasesArray(info)
-                drawChart(cases.reverse(), date, 'World')
+                drawChart(cases.reverse(), date.reverse(), 'World')
             })
         } catch(e) {
             throw Error(e)
