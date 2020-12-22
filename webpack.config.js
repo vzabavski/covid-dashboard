@@ -10,7 +10,8 @@ module.exports = {
         chart: './scripts/chart.js',
         keyboard: './scripts/keyboard.js',
         map: './scripts/map.js',
-        table:'./scripts/cases.table.js'
+        table:'./scripts/cases.table.js',
+        rtable:'./scripts/table.js'
     },
     output: {
         filename: '[name].bundle.js',
