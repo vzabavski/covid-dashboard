@@ -115,10 +115,10 @@
 					<div class="main__table table fullscreen">
 						<button class="btn-fullscreen"></button>
 						<table class="table__body">
-							<caption>
-								<button class="table__btn"></button>
-								Total
-								<button class="table__btn table__btn_right"></button>
+							<caption class="mode_place">
+								<button class="table__btn mode_switch_left"></button>
+								<div class="table_mode">Total</div>
+								<button class="table__btn table__btn_right mode_switch_right"></button>
 							</caption>
 							<thead>
 								<tr>
@@ -128,12 +128,12 @@
 									<th>Recovered</th>
 								</tr>
 							</thead>
-							<tbody>
-								<tr>
-									<td>Belarus</td>
-									<td>325365</td>
-									<td>3822</td>
-									<td>452828</td>
+							<tbody class="table_entity">
+								<tr class="table_row">
+									<td class="country"></td>
+									<td class="cases"></td>
+									<td class="deaths"></td>
+									<td class="recovered"></td>
 								</tr>
 							</tbody>
 						</table>
