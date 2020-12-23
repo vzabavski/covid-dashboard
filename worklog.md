@@ -18,3 +18,11 @@
 2h          |  Implemented styles to list.  
 2h          |  Customized table with cases.  
 3h          |  Setting up collaboration of project functions  
+
+
+### Andrew Blishch:
+
+5h          |  HTML/CSS coding
+5h          |  fix design after adding a map, list, table, and graph.
+5h          |  responsive web design
+2h          |  finalization of web design
