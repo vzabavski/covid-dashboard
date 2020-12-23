@@ -507,6 +507,7 @@ h6 {
 }
 
 .table__body {
+
   width: 100%;
   border-collapse: collapse;
   border: 1px solid #777777;
@@ -532,7 +533,7 @@ h6 {
 	position: absolute;
 	margin-top: -10px;
 	top: 50%;
-	left: 20px;
+	left: 10px;
 }
 
 .table-head {
@@ -543,7 +544,7 @@ h6 {
 	-webkit-transform: rotate(180deg);
 	transform: rotate(180deg);
 	left: auto;
-	right: 20px;
+	right: 10px;
 }
 
 .table-topic{
@@ -574,6 +575,12 @@ h6 {
 	background-color: #3f3f3f;
 	border: 1px solid #777777;
 	position: relative;
+}
+
+.chart.open #myChart{
+	width: 100%;
+	max-width: 900px;
+	height: auto;
 }
 
 .form-chart {
