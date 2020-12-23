@@ -500,13 +500,15 @@ h6 {
 }
 
 .table__body {
-	width: 100%;
-	border-collapse: collapse;
-	border: 1px solid #777777;
-	text-align: center;
-	background-color: #3f3f3f;
-	color: #fff;
-	font-size: 25px;
+
+  width: 100%;
+  border-collapse: collapse;
+  border: 1px solid #777777;
+  text-align: center;
+  background-color: #3f3f3f;
+  color: #fff;
+  font-size: 20px;
+
 }
 
 .table caption {

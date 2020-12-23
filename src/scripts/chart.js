@@ -1,5 +1,7 @@
+/* eslint-disable no-unused-vars */
+/* eslint-disable no-undef */
 import '../styles/chart.css'
-import {getInfo} from './stats.data'
+import {getInfo} from './stats.data.js'
 var Chart = require('chart.js');
 const chart = document.getElementById('myChart');
 
@@ -83,3 +85,4 @@ function saveSettings(mode) {
 
 initChart()
 
+export default initChart
