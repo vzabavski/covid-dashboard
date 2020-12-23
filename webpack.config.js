@@ -7,11 +7,12 @@ module.exports = {
     mode: 'development',
     entry:{
         script: './scripts/script.js',
-        chart: './scripts/chart.js',
         keyboard: './scripts/keyboard.js',
+        table: './scripts/table.js',
         map: './scripts/map.js',
-        table:'./scripts/cases.table.js',
-        rtable:'./scripts/table.js'
+        rtable:'./scripts/cases.table.js',
+
+
     },
     output: {
         filename: '[name].bundle.js',

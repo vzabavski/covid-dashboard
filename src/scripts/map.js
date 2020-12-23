@@ -1,8 +1,14 @@
 import getInf from './table.js'
 import '../styles/map.css'
 import json from './countries.json'
+import {initChart} from './chart'
+import {getInf} from './table'
 
-let map = L.map('map').setView([30.505, -0.09], 2);
+var L = require('leaflet')
+var leafletMap = require('leaflet-map')
+ 
+var map = leafletMap().setView([30.505, -0.09], 2);
+map.id = 'map'
 L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png',{
         tileSize: 512,
         zoomOffset: -1,
@@ -36,7 +42,7 @@ function countryPointToLayer(feature, latlng) {
     }
 
     const html = 
-    `<span class='info ${setSize}'>
+    `<span class='marker ${setSize}'>
         <span>${casesString}</span>
      </span>`;
      return L.marker(latlng, {
@@ -117,9 +123,11 @@ function countryPointToLayer(feature, latlng) {
             
         };
         function zoomToCountry(e) {
-            console.log(e.target.feature.properties.ADMIN)
+
+            let countryName = e.target.feature.properties.ADMIN;
             map.fitBounds(e.target.getBounds());
-            getInf('https://disease.sh/v3/covid-19/countries','https://corona.lmao.ninja/v2/countries', e.target.feature.properties.ADMIN)
+            initChart(countryName)
+            getInf('https://disease.sh/v3/covid-19/countries', 'https://corona.lmao.ninja/v2/countries', countryName)
         };
 
         function onEachCountry(_, layer) {
