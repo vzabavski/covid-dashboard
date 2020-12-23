@@ -1,14 +1,10 @@
 /* eslint-disable no-undef */
 import getInf from './table.js'
 import '../styles/map.css'
-import json from './countries.json'
+import json from './custom.geo.json'
 import {initChart} from './chart'
 
-var L = require('leaflet')
-var leafletMap = require('leaflet-map')
- 
-var map = leafletMap().setView([30.505, -0.09], 2);
-map.id = 'map'
+let map = L.map('map').setView([30.505, -0.09], 2);
 L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png',{
         tileSize: 512,
         zoomOffset: -1,
@@ -116,15 +112,14 @@ function countryPointToLayer(feature, latlng) {
                 layer.bringToFront();
             }
             for (let c of stats) {
-                if (layer.feature.properties.ADMIN === c.country || layer.feature.properties.ISO_A3 === c.country) {
+                if (layer.feature.properties.admin === c.country || layer.feature.properties.adm0_a3 === c.country) {
                     info.update(c.country, c.cases, c.recovered, c.deaths);
                 }
             }
             
         }
         function zoomToCountry(e) {
-
-            let countryName = e.target.feature.properties.ADMIN;
+            let countryName = e.target.feature.properties.admin;
             map.fitBounds(e.target.getBounds());
             initChart(countryName)
             getInf('https://disease.sh/v3/covid-19/countries', 'https://corona.lmao.ninja/v2/countries', countryName)
