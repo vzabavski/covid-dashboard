@@ -1,7 +1,8 @@
+/* eslint-disable no-undef */
+import getInf from './table.js'
 import '../styles/map.css'
 import json from './countries.json'
 import {initChart} from './chart'
-import {getInf} from './table'
 
 var L = require('leaflet')
 var leafletMap = require('leaflet-map')
@@ -85,7 +86,7 @@ function countryPointToLayer(feature, latlng) {
                 dashArray: '3',
                 fillOpacity: 0.7
             };
-        };
+        }
         const info = L.control();
 
         info.onAdd = function () {
@@ -101,7 +102,7 @@ function countryPointToLayer(feature, latlng) {
         function resetHighlight(e) {
             countriesBorders.resetStyle(e.target);
             info.update();
-        };
+        }
         function highlightCountry(e) {
             var layer = e.target;
             layer.setStyle({
@@ -120,14 +121,14 @@ function countryPointToLayer(feature, latlng) {
                 }
             }
             
-        };
+        }
         function zoomToCountry(e) {
 
             let countryName = e.target.feature.properties.ADMIN;
             map.fitBounds(e.target.getBounds());
             initChart(countryName)
             getInf('https://disease.sh/v3/covid-19/countries', 'https://corona.lmao.ninja/v2/countries', countryName)
-        };
+        }
 
         function onEachCountry(_, layer) {
             layer.on({
@@ -135,7 +136,7 @@ function countryPointToLayer(feature, latlng) {
                 mouseout: resetHighlight,
                 click: zoomToCountry
             });
-        };
+        }
 
         const countriesBorders = new L.geoJSON(json, {
             style: style,

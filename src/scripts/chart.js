@@ -1,17 +1,14 @@
-/* eslint-disable no-unused-vars */
 /* eslint-disable no-undef */
 import '../styles/chart.css'
 import {getInfo} from './stats.data.js'
 var Chart = require('chart.js');
+console.log(Chart, typeof Chart)
 const chart = document.getElementById('myChart');
-
-
 
 export function initChart(country = 'world', mode='total') {
     if (country !== 'world') {
         getInfo(country, mode)
         .then((data) => {
-            console.log(data)
             let [cases, date] = createCasesArray(data.allData, true)
             drawChart(cases, date, country)
         })
@@ -32,7 +29,7 @@ export function initChart(country = 'world', mode='total') {
 }
 
 function drawChart(cases, date, countryName) {
-    var myChart = new Chart(chart, {
+       let myChart = new Chart(chart, {
         type: 'line',
         data: {
             labels: date,
@@ -54,6 +51,7 @@ function drawChart(cases, date, countryName) {
             }
         }
     });
+    return myChart
 }
 
 function createChartPoint(times, color) {
