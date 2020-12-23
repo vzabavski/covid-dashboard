@@ -1,9 +1,7 @@
-/* eslint-disable no-undef */
 import '../styles/chart.css'
 import {getInfo} from './stats.data.js'
 var Chart = require('chart.js');
-console.log(Chart, typeof Chart)
-const chart = document.getElementById('myChart');
+let chart = document.getElementById('myChart');
 
 export function initChart(country = 'world', mode='total') {
     if (country !== 'world') {
@@ -28,8 +26,8 @@ export function initChart(country = 'world', mode='total') {
     }
 }
 
-function drawChart(cases, date, countryName) {
-       let myChart = new Chart(chart, {
+function drawChart(cases, date, countryName) { 
+       var myChart = new Chart(chart, {
         type: 'line',
         data: {
             labels: date,
@@ -38,14 +36,14 @@ function drawChart(cases, date, countryName) {
                 data: cases,
                 backgroundColor: createChartPoint(cases.length, 'rgba(255, 99, 132, 0.2)'),
                 borderColor: createChartPoint(cases.length, 'rgba(255, 99, 132, 1)'),
-                borderWidth: 1
+                borderWidth: 1,
             }]
         },
         options: {
             scales: {
                 yAxes: [{
                     ticks: {
-                        beginAtZero: true
+                        beginAtZero: true,
                     }
                 }]
             }
