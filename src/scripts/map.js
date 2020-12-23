@@ -1,3 +1,4 @@
+import getInf from './table.js'
 import '../styles/map.css'
 import json from './countries.json'
 
@@ -116,7 +117,9 @@ function countryPointToLayer(feature, latlng) {
             
         };
         function zoomToCountry(e) {
+            console.log(e.target.feature.properties.ADMIN)
             map.fitBounds(e.target.getBounds());
+            getInf('https://disease.sh/v3/covid-19/countries','https://corona.lmao.ninja/v2/countries', e.target.feature.properties.ADMIN)
         };
 
         function onEachCountry(_, layer) {
