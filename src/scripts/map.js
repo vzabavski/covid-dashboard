@@ -1,4 +1,3 @@
-import getInf from './table.js'
 import '../styles/map.css'
 import json from './countries.json'
 import {initChart} from './chart'
