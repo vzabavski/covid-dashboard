@@ -1,14 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<<<<<<< HEAD
-	 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
-=======
 	<link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
->>>>>>> origin/dev
     integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
     crossorigin=""/>
     <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
@@ -16,7 +11,6 @@
     crossorigin=""></script>
     <title>COVID-19 Dashboard</title>
 </head>
-
 <body>
 	<header class="header">
 		<div class='container'>
@@ -28,6 +22,10 @@
 	</header>
 	<main class="main">
 		<div class='container'>
+			<div class="main__burger burger">
+				<button class="burger__btn burger__btn_left">Cases by Country/Region/Sovereignty</button>
+				<button class="burger__btn burger__btn_right">Table and Chart</button>
+			</div>
 			<div class="main__body">
 				<div class="main__left-column">
 					<div class="main__global global fullscreen">
@@ -42,7 +40,6 @@
 							<h2 class="list__title">Cases by Country/Region/Sovereignty</h2>
 							<form class="list__form form" action="" method="get">
 								<input class="form__input" placeholder="Search..." type="text">
-								<!--<button class="form__button" type="submit"></button>-->
 							</form>
 							<form>
 								<div class="select" data-state="">
@@ -100,10 +97,7 @@
 								</div>
 							</form>
 						</div>
-						<div class="list__nav">
-							<!--<li><span class="list__counter">3 457 327</span><span class="list__country">Belarus</span></li>-->
-
-						</div>
+						<div class="list__nav"></div>
 					</div>
 				</div>
 				<div class="main__map map fullscreen">
@@ -138,7 +132,31 @@
 							</tbody>
 						</table>
 					</div>
-					<div class="main__chart chart">
+					<div class="main__chart chart fullscreen">
+						<button class="btn-fullscreen"></button>
+						<form class="chart__form form-chart">
+							<p class="form-chart__title">Select mode:</p>
+							<div class="form-chart__line">
+								<input class="form-chart__radio" type="radio" id="total" name="mode" value="total" checked>
+								<label class="form-chart__label" for="total">Total</label>
+							</div>
+							<div class="form-chart__line">
+								<input class="form-chart__radio" type="radio" id="live" name="mode" value="live">
+								<label class="form-chart__label" for="live">Live</label>
+							</div>
+							<button class="form-chart__btn" type="button" id="save_mode">Save</button>
+							<p class="form-chart__title">Select count mode:</p>
+							<div class="form-chart__line">
+								<input class="form-chart__radio" type="radio" id="absolute" name="count" value="absolute" checked>
+								<label class="form-chart__label" for="absolute">Absolute</label>
+							</div>
+							<div class="form-chart__line">
+								<input class="form-chart__radio" type="radio" id="per" name="count" value="per">
+								<label class="form-chart__label" for="per">per 100 000 people</label>
+							</div>
+							<button class="form-chart__btn" type="button" id="save_count">Save</button>
+						</form>
+						<canvas id="myChart" data-value="world"></canvas>
 					</div>
 				</div>
 				<div class="keyboard hidden">
@@ -209,41 +227,20 @@
 				</div>
 			</div>
 		</div>
-		
-			<form class="charSettings">
-				<p>Select mode:</p>
-				<input type="radio" id="total" name="mode" value="total" checked>
-				<label for="total">Total</label><br>
-				<input type="radio" id="live" name="mode" value="live">
-				<label for="live">Live</label><br>
-				<button type="button" id="save_mode">Save</button>
-			  
-				<p>Select count mode:</p>
-				<input type="radio" id="absolute" name="count" value="absolute" checked>
-				<label for="absolute">Absolute</label><br>
-				<input type="radio" id="per" name="count" value="per">
-				<label for="per">per 100 000 people</label><br>
-				<button type="button" id="save_count">Save</button>
-			  </form>
-		<canvas id="myChart" data-value="world"></canvas>
 	</main>
-
 	<footer class="footer">
 		<div class='container'>
 			<div class="footer__body">
-				<div class="footer__rss">
-					<a class="footer__logo" href="https://rs.school/js/" target="blank"><img
-							src="assets/image/rs_school_js.svg" alt=""></a>
+				<div class="footer__author">Created by 
+					<a class="footer__author_link" href="" target="blank">DeLarge Alex,</a>
+					<a class="footer__author_link" href="https://github.com/andrew-soldat" target="blank">Andrew Blishch,</a>
+					<a class="footer__author_link" href="" target="blank">Gordey Druzhina,</a>
+					<a class="footer__author_link" href="" target="blank">Павел Махнач</a>
+					for the<a class="footer__logo" href="https://rs.school/js/" target="blank"><img src="assets/image/rs_school_js.svg" alt=""></a>
 				</div>
-				<div class="footer__author">© 2020 <a class="footer__author_link" href="" target="blank"></a></div>
+				<div class="footer__copyright">© 2020</div>
 			</div>
 		</div>
 	</footer>
-<<<<<<< HEAD
-=======
-
->>>>>>> origin/dev
-
 </body>
-
 </html>
