@@ -17,7 +17,6 @@ async function getCountryInfo(url = 'https://disease.sh/v3/covid-19/countries', 
   let total = 0
   covidData.map((a) => total += a.cases)
 
-  // add needed info from different API's to covidData (to the HEAP object)
   for (let i = 0; i < covidData.length; i++) {
     for (let j = 0; j < PopulationData.length; j++) {
       if (covidData[i].country.toLowerCase() === PopulationData[j].country.toLowerCase()) {
@@ -29,7 +28,7 @@ async function getCountryInfo(url = 'https://disease.sh/v3/covid-19/countries', 
   document.querySelector('.global__cases').innerText = total
 
 }
-// click global-cases --> run global (world) cases in the table
+
 getCountryInfo()
   document.querySelector('.main__global').addEventListener('click',()=>{
     getInf('https://disease.sh/v3/covid-19/countries', 'https://corona.lmao.ninja/v2/countries', 'World')
@@ -90,7 +89,7 @@ function drawTable(data, sortedMode) {
         }
       }
     })
-  // table sorting by cases
+
   let countryCases = document.querySelectorAll('tr.table-topic');
   countryCases = Array.prototype.slice.call(countryCases);
   countryCases.sort(function (a, b) {
@@ -108,25 +107,23 @@ function drawTable(data, sortedMode) {
         countryData = country
         getInf('https://disease.sh/v3/covid-19/countries', 'https://corona.lmao.ninja/v2/countries', countryData.country)
         initChart(countryData.country)
-       // return country
       }
     })
   }
   return tableTopicRow, statistic
 }
 
-// count cases per 100.000 people
+
 function countTotalPerValue(cases, population) {
   return (cases / population) ? (cases / population * 100000).toFixed(0) : 0
 }
-// search country by filtered letters
+
 searchInput.addEventListener('input', (e) => searchCountry(e.target.value))
 function searchCountry(letter) {
   searchTerm = letter;
   getCountryInfo('https://disease.sh/v3/covid-19/countries', 'https://corona.lmao.ninja/v2/countries', tableMode)
 }
 
-// select type of sorting
 document.querySelector('.select').addEventListener('click', (e) => {
   if (e.target.dataset.value) {
     tableMode = e.target.dataset.value
@@ -134,7 +131,6 @@ document.querySelector('.select').addEventListener('click', (e) => {
   }
 })
 
-//create and fill DOM element
 class DOMelement {
   constructor(tagName = 'div', selector, className = '', inner = '', event, callback) {
     let el = document.createElement(tagName);

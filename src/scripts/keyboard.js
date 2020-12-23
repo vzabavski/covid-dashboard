@@ -29,7 +29,6 @@ let arrEn = {
     "53": '5', "54": '6', "55": '7', "56": '8', "57": '9', "48": '0', "189": '-', "187": '=', "13": '\n', "220": '\\'
 }
 
-// to fill the buttuns
 function buttonTxt() {
     number.forEach(function (num) {
         let ButtonText
@@ -49,7 +48,7 @@ function buttonTxt() {
     })
 }
 buttonTxt()
-//Add eventhandler to buttons
+
 number.forEach(function (num) {
     num.addEventListener('click', function (arg) {
         clearProp();
@@ -80,7 +79,6 @@ let numberFunc = (number) => {
     curString()
 }
 
-// Sharing event with the screen
 function curString() {
     let tempLetter = CurrentLetter;
     if (Caps === true && Shift === false) {
@@ -103,7 +101,6 @@ function clearProp() {
     number.forEach(number => number.classList.remove('key-press'))
 }
 
-// CapsLock
 function capsFunc() {
     searchInput.focus()
     if (Caps === false) {
@@ -117,7 +114,7 @@ function capsFunc() {
     }
     return Caps
 }
-//Shift
+
 function shiftFunc() {
     buttonTxt()
     searchInput.focus()
@@ -131,7 +128,7 @@ function shiftFunc() {
         buttonTxt()
     }
 }
-// BackSpasce
+
 function backSp() {
     searchInput.focus()
     if (searchInput.textLength === searchInput.selectionEnd) {
