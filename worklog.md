@@ -23,6 +23,7 @@
 ### Andrew Blishch:
 
 5h          |  HTML/CSS coding.  
-5h          |  Fix design after adding a map, list, table, and graph. 
+5h          |  Fix design after adding a map, list, table, and graph.
+
 5h          |  Responsive web design.  
 3h          |  Finalization of web design.
