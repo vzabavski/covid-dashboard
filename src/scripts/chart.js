@@ -71,6 +71,7 @@ function createCasesArray(statArray, mode) {
     }
     return [confirmed, date];
 }
+
 const btn1 = document.getElementById('save_mode');
 btn1.addEventListener('click', () => saveSettings('mode'))
 function saveSettings(mode) {

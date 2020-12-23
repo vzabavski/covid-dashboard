@@ -1,8 +1,7 @@
 const path = require('path')
 const HTMLWebpackPlugin = require('html-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
-const JsonMinimizerPlugin = require("json-minimizer-webpack-plugin");
-const CopyPlugin = require("copy-webpack-plugin");
+
 
 module.exports = {
     context: path.resolve(__dirname, 'src'),
@@ -10,7 +9,6 @@ module.exports = {
     entry:{
         script: './scripts/script.js',
         keyboard: './scripts/keyboard.js',
-        table: './scripts/table.js',
         map: './scripts/map.js'
     },
     output: {

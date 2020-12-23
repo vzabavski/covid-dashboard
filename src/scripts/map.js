@@ -1,4 +1,3 @@
-/* eslint-disable no-undef */
 import getInf from './table.js'
 import '../styles/map.css'
 import json from './custom.geo.json'
