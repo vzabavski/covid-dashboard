@@ -503,6 +503,7 @@ h6 {
 .table {
 	position: relative;
 	background-color: #3f3f3f;
+	margin-bottom: 10px;
 }
 
 .table__body {
@@ -573,6 +574,13 @@ h6 {
 	width: 100%;
 	background-color: #3f3f3f;
 	border: 1px solid #777777;
+	position: relative;
+}
+
+.chart.open #myChart{
+	width: 100%;
+	max-width: 900px;
+	height: auto;
 }
 
 .form-chart {
