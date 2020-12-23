@@ -1,9 +1,11 @@
+import '../styles/style.css'
+import getInf from './table.js'
 const searchInput = document.querySelector('.form__input')
 let countryData = {}
 let searchTerm = ''
 let tableMode = 'Total cases'
 
-async function getInfo(url = 'https://disease.sh/v3/covid-19/countries', url1 = 'https://corona.lmao.ninja/v2/countries', mode = 'Total cases', countryInfo) {
+async function getCountryInfo(url = 'https://disease.sh/v3/covid-19/countries', url1 = 'https://corona.lmao.ninja/v2/countries', mode = 'Total cases') {
   let sortingValue = mode
   const response = await fetch(url)
   const response1 = await fetch(url1)
@@ -23,22 +25,17 @@ async function getInfo(url = 'https://disease.sh/v3/covid-19/countries', url1 = 
     }
   }
   console.log(covidData)
- //-----------ЕСЛИ НАДО ОСТАВИТЬ ЕСЛИ НЕТ-УБРАТЬ--------//
-  if (!countryInfo) {
-    drawTable(covidData, sortingValue)
-  }else if(countryInfo){
-  drawTable([countryInfo], sortingValue)
-  }
+  drawTable(covidData, sortingValue)
   document.querySelector('.global__cases').innerText = total
 }
-getInfo()
+getCountryInfo()
 
 function drawTable(data, sortedMode) {
-  if (document.querySelector('table')) {
-    document.querySelector('table').remove();
-  } 
-    //ЕСЛИ НАДО ОСТАВИТЬ ЕСЛИ НЕТ-УБРАТЬ
-  let statistic = new DOMelement('table','.list__nav','statistic-table','', 'click', () => getInfo())
+  if (document.querySelector('table.statistic-table')) {
+    document.querySelector('table.statistic-table').remove();
+  }
+
+  let statistic = new DOMelement('table', '.list__nav', 'statistic-table', '', 'click', () => getCountryInfo())
   let tableTopicRow
   data
     .filter(country => country.country.toLowerCase().includes(searchTerm.toLowerCase()))
@@ -46,43 +43,43 @@ function drawTable(data, sortedMode) {
       if (country.population !== 0) {
         switch (sortedMode) {
           case 'Total cases':
-            tableTopicRow = new DOMelement('tr', 'table', 'table-topic', `<td><img src=${country.countryInfo.flag} alt="flag" style ="width: 75px;height: 50px;"></td><td>${country.country}</td><td class="cases-column" >${country.cases}</td>`, 'click', (e) => { getCountryInfo(e) })
+            tableTopicRow = new DOMelement('tr', 'table.statistic-table', 'table-topic', `<td><img src=${country.countryInfo.flag} alt="flag" style ="width: 75px;height: 50px;"></td><td>${country.country}</td><td class="cases-column" >${country.cases}</td>`, 'click', (e) => { getCountryInfo(e) })
             break;
           case 'Total deaths':
-            tableTopicRow = new DOMelement('tr', 'table', 'table-topic', `<td><img src=${country.countryInfo.flag} alt="flag" style ="width: 75px;height: 50px;"></td><td>${country.country}</td><td class="cases-column" >${country.deaths}</td>`, 'click', (e) => { getCountryInfo(e) })
+            tableTopicRow = new DOMelement('tr', 'table.statistic-table', 'table-topic', `<td><img src=${country.countryInfo.flag} alt="flag" style ="width: 75px;height: 50px;"></td><td>${country.country}</td><td class="cases-column" >${country.deaths}</td>`, 'click', (e) => { getCountryInfo(e) })
             break;
           case 'Total recovered':
-            tableTopicRow = new DOMelement('tr', 'table', 'table-topic', `<td><img src=${country.countryInfo.flag} alt="flag" style ="width: 75px;height: 50px;"></td><td>${country.country}</td><td class="cases-column" >${country.recovered}</td>`, 'click', (e) => { getCountryInfo(e) })
+            tableTopicRow = new DOMelement('tr', 'table.statistic-table', 'table-topic', `<td><img src=${country.countryInfo.flag} alt="flag" style ="width: 75px;height: 50px;"></td><td>${country.country}</td><td class="cases-column" >${country.recovered}</td>`, 'click', (e) => { getCountryInfo(e) })
             break;
           case 'Today cases':
-            tableTopicRow = new DOMelement('tr', 'table', 'table-topic', `<td><img src=${country.countryInfo.flag} alt="flag" style ="width: 75px;height: 50px;"></td><td>${country.country}</td><td class="cases-column" >${country.todayCases}</td>`, 'click', (e) => { getCountryInfo(e) })
+            tableTopicRow = new DOMelement('tr', 'table.statistic-table', 'table-topic', `<td><img src=${country.countryInfo.flag} alt="flag" style ="width: 75px;height: 50px;"></td><td>${country.country}</td><td class="cases-column" >${country.todayCases}</td>`, 'click', (e) => { getCountryInfo(e) })
             break;
           case 'Today deaths':
-            tableTopicRow = new DOMelement('tr', 'table', 'table-topic', `<td><img src=${country.countryInfo.flag} alt="flag" style ="width: 75px;height: 50px;"></td><td>${country.country}</td><td class="cases-column" >${country.todayDeaths}</td>`, 'click', (e) => { getCountryInfo(e) })
+            tableTopicRow = new DOMelement('tr', 'table.statistic-table', 'table-topic', `<td><img src=${country.countryInfo.flag} alt="flag" style ="width: 75px;height: 50px;"></td><td>${country.country}</td><td class="cases-column" >${country.todayDeaths}</td>`, 'click', (e) => { getCountryInfo(e) })
             break;
           case 'Today recovered':
-            tableTopicRow = new DOMelement('tr', 'table', 'table-topic', `<td><img src=${country.countryInfo.flag} alt="flag" style ="width: 75px;height: 50px;"></td><td>${country.country}</td><td class="cases-column" >${country.todayRecovered}</td>`, 'click', (e) => { getCountryInfo(e) })
+            tableTopicRow = new DOMelement('tr', 'table.statistic-table', 'table-topic', `<td><img src=${country.countryInfo.flag} alt="flag" style ="width: 75px;height: 50px;"></td><td>${country.country}</td><td class="cases-column" >${country.todayRecovered}</td>`, 'click', (e) => { getCountryInfo(e) })
             break;
           case 'Total cases per 100.000 population':
-            tableTopicRow = new DOMelement('tr', 'table', 'table-topic', `<td><img src=${country.countryInfo.flag} alt="flag" style ="width: 75px;height: 50px;"></td><td>${country.country}</td><td class="cases-column" >${countTotalPerValue(country.cases, country.population)}</td>`, 'click', (e) => { getCountryInfo(e) })
+            tableTopicRow = new DOMelement('tr', 'table.statistic-table', 'table-topic', `<td><img src=${country.countryInfo.flag} alt="flag" style ="width: 75px;height: 50px;"></td><td>${country.country}</td><td class="cases-column" >${countTotalPerValue(country.cases, country.population)}</td>`, 'click', (e) => { getCountryInfo(e) })
             break;
           case 'Total deaths per 100.000 population':
-            tableTopicRow = new DOMelement('tr', 'table', 'table-topic', `<td><img src=${country.countryInfo.flag} alt="flag" style ="width: 75px;height: 50px;"></td><td>${country.country}</td><td class="cases-column" >${countTotalPerValue(country.deaths, country.population)}</td>`, 'click', (e) => { getCountryInfo(e) })
+            tableTopicRow = new DOMelement('tr', 'table.statistic-table', 'table-topic', `<td><img src=${country.countryInfo.flag} alt="flag" style ="width: 75px;height: 50px;"></td><td>${country.country}</td><td class="cases-column" >${countTotalPerValue(country.deaths, country.population)}</td>`, 'click', (e) => { getCountryInfo(e) })
             break;
           case 'Total recovered per 100.000 population':
-            tableTopicRow = new DOMelement('tr', 'table', 'table-topic', `<td><img src=${country.countryInfo.flag} alt="flag" style ="width: 75px;height: 50px;"></td><td>${country.country}</td><td class="cases-column" >${countTotalPerValue(country.recovered, country.population)}</td>`, 'click', (e) => { getCountryInfo(e) })
+            tableTopicRow = new DOMelement('tr', 'table.statistic-table', 'table-topic', `<td><img src=${country.countryInfo.flag} alt="flag" style ="width: 75px;height: 50px;"></td><td>${country.country}</td><td class="cases-column" >${countTotalPerValue(country.recovered, country.population)}</td>`, 'click', (e) => { getCountryInfo(e) })
             break;
           case 'Today cases per 100.000 population':
-            tableTopicRow = new DOMelement('tr', 'table', 'table-topic', `<td><img src=${country.countryInfo.flag} alt="flag" style ="width: 75px;height: 50px;"></td><td>${country.country}</td><td class="cases-column" >${countTotalPerValue(country.todayCases, country.population)}</td>`, 'click', (e) => { getCountryInfo(e) })
+            tableTopicRow = new DOMelement('tr', 'table.statistic-table', 'table-topic', `<td><img src=${country.countryInfo.flag} alt="flag" style ="width: 75px;height: 50px;"></td><td>${country.country}</td><td class="cases-column" >${countTotalPerValue(country.todayCases, country.population)}</td>`, 'click', (e) => { getCountryInfo(e) })
             break;
           case 'Today deaths per 100.000 population':
-            tableTopicRow = new DOMelement('tr', 'table', 'table-topic', `<td><img src=${country.countryInfo.flag} alt="flag" style ="width: 75px;height: 50px;"></td><td>${country.country}</td><td class="cases-column" >${countTotalPerValue(country.todayDeaths, country.population)}</td>`, 'click', (e) => { getCountryInfo(e) })
+            tableTopicRow = new DOMelement('tr', 'table.statistic-table', 'table-topic', `<td><img src=${country.countryInfo.flag} alt="flag" style ="width: 75px;height: 50px;"></td><td>${country.country}</td><td class="cases-column" >${countTotalPerValue(country.todayDeaths, country.population)}</td>`, 'click', (e) => { getCountryInfo(e) })
             break;
           case 'Today recovered per 100.000 population':
-            tableTopicRow = new DOMelement('tr', 'table', 'table-topic', `<td><img src=${country.countryInfo.flag} alt="flag" style ="width: 75px;height: 50px;"></td><td>${country.country}</td><td class="cases-column" >${countTotalPerValue(country.todayRecovered, country.population)}</td>`, 'click', (e) => { getCountryInfo(e) })
+            tableTopicRow = new DOMelement('tr', 'table.statistic-table', 'table-topic', `<td><img src=${country.countryInfo.flag} alt="flag" style ="width: 75px;height: 50px;"></td><td>${country.country}</td><td class="cases-column" >${countTotalPerValue(country.todayRecovered, country.population)}</td>`, 'click', (e) => { getCountryInfo(e) })
             break;
           default:
-            tableTopicRow = new DOMelement('tr', 'table', 'table-topic', `<td><img src=${country.countryInfo.flag} alt="flag" style ="width: 75px;height: 50px;"></td><td>${country.country}</td><td class="cases-column" >${country.cases}</td>`, 'click', (e) => { getCountryInfo(e) })
+            tableTopicRow = new DOMelement('tr', 'table.statistic-table', 'table-topic', `<td><img src=${country.countryInfo.flag} alt="flag" style ="width: 75px;height: 50px;"></td><td>${country.country}</td><td class="cases-column" >${country.cases}</td>`, 'click', (e) => { getCountryInfo(e) })
         }
       }
     })
@@ -103,8 +100,7 @@ function drawTable(data, sortedMode) {
       if (country.country === e.currentTarget.children[1].innerHTML) {
         countryData = country
         console.log(countryData)
-            //ЕСЛИ НАДО ОСТАВИТЬ ЕСЛИ НЕТ-УБРАТЬ СОБЫТИЕ С КЛИКА ПО ЭЛЕЕМНТУ
-        //getInfo(https://disease.sh/v3/covid-19/countries, 'https://corona.lmao.ninja/v2/countries',tableMode , countryData)
+        getInf('https://disease.sh/v3/covid-19/countries', 'https://corona.lmao.ninja/v2/countries', countryData.country)
         return country
       }
     })
@@ -120,16 +116,17 @@ function countTotalPerValue(cases, population) {
 searchInput.addEventListener('input', (e) => searchCountry(e.target.value))
 function searchCountry(letter) {
   searchTerm = letter;
-  getInfo('https://disease.sh/v3/covid-19/countries', 'https://corona.lmao.ninja/v2/countries', tableMode)
+  getCountryInfo('https://disease.sh/v3/covid-19/countries', 'https://corona.lmao.ninja/v2/countries', tableMode)
 }
 
 // select type of sorting
 document.querySelector('.select').addEventListener('click', (e) => {
   if (e.target.dataset.value) {
     tableMode = e.target.dataset.value
-    getInfo('https://disease.sh/v3/covid-19/countries', 'https://corona.lmao.ninja/v2/countries', e.target.dataset.value)
+    getCountryInfo('https://disease.sh/v3/covid-19/countries', 'https://corona.lmao.ninja/v2/countries', e.target.dataset.value)
   }
 })
+
 //create and fill DOM element
 class DOMelement {
   constructor(tagName = 'div', selector, className = '', inner = '', event, callback) {
@@ -141,9 +138,4 @@ class DOMelement {
     this.node = el;
   }
 }
-//https://corona-api.com/countries
-//https://corona.lmao.ninja/v2/countries
-//https://api.covid19api.com/summary
-//https://disease.sh/v3/covid-19/countries
-
 export { searchInput, searchCountry }

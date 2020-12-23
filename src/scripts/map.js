@@ -1,3 +1,4 @@
+import getInf from './table.js'
 import '../styles/map.css'
 import json from './countries.json'
 import {initChart} from './chart'
@@ -122,6 +123,7 @@ function countryPointToLayer(feature, latlng) {
             
         };
         function zoomToCountry(e) {
+
             let countryName = e.target.feature.properties.ADMIN;
             map.fitBounds(e.target.getBounds());
             initChart(countryName)

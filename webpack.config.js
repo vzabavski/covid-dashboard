@@ -10,6 +10,9 @@ module.exports = {
         keyboard: './scripts/keyboard.js',
         table: './scripts/table.js',
         map: './scripts/map.js',
+        rtable:'./scripts/cases.table.js',
+
+
     },
     output: {
         filename: '[name].bundle.js',
