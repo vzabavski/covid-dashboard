@@ -27,3 +27,11 @@
 2h          |  Implemented functions (so that each block of information can be expanded to full screen; selection of an item in the drop-down list; so that a hidden block of the list and table with a graph appears when the screen width is <1200px).  
 5h          |  Responsive web design.  
 3h          |  Finalization of web design.
+
+
+### Gordey Druzhina:
+
+1h          | Create basic fulling map method
+2h          | Create changing condition methods
+2h          | Create getInf function
+3h          | fix getInf function
