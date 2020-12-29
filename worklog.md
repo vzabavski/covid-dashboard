@@ -31,7 +31,7 @@
 
 ### Gordey Druzhina:
 
-1h          | Create basic fulling map method
-2h          | Create changing condition methods
-2h          | Create getInf function
-3h          | fix getInf function
+2h          | Create basic fulling map method.
+2h          | Create changing condition methods.
+3h          | Create getInf function.
+3h          | fix getInf function.
